@@ -22,9 +22,7 @@ my $dir = getcwd;
 # of the API call will be needed
 
 my $client = REST::Client->new();
-# Consider uncommenting the line below and adding your email address before running 
-# the script. CrossRef prefers that users identify themselves.
-#$client->addHeader('User-Agent', 'SciData; mailto:email-address@here');
+$client->addHeader('User-Agent', 'SciData; mailto:andrew.hufton@nature.com');
 $client->GET("http://api.crossref.org/journals/2052-4463/works?rows=1000&select=DOI,published-online,alternative-id");
 
 my $article_metadata = parse_json ( $client->responseContent() ); 
